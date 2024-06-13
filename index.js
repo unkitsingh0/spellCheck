@@ -1,11 +1,13 @@
 const express = require("express");
 const Typo = require("typo-js");
 const dictionary = new Typo("en_US");
+const cors = require("cors");
 require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 9000;
 //middleware
 app.use(express.json());
+app.use(cors());
 
 function checkSpell(spell) {
   var is_spelled_correctly = dictionary.check(spell);
